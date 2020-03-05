@@ -39,10 +39,10 @@ export default {
         }
     },
     created () {
-        this.featured = this.posts.data.length > 0 ? this.posts.data[0] : {};
+        this.featured = this.posts.data.length > 0 ? this.posts.data[0] : null;
         let posts = this.posts.data;
         this.links = this.posts.links;
-        this.older = Array.isArray(posts) ? this.setOlderPosts(posts) : [];
+        this.older = Array.isArray(posts) && posts.length > 0 ? this.setOlderPosts(posts) : null;
     },
     methods: {
         setOlderPosts (posts) {
