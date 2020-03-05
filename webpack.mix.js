@@ -4,12 +4,6 @@ const mix = require('laravel-mix');
 const path = require('path');
 const tailwindcss = require('tailwindcss');
 
-class TailwindExtractor {
-    static extract (content) {
-        return content.match(/[\w-/:]+(?<!:)/g) || [];
-    }
-}
-
 const purgecss = require('@fullhuman/postcss-purgecss')({
     content: [
         path.join(__dirname, 'resources/views/**/*.blade.php'),
@@ -19,7 +13,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     whitelistPatterns: [/^attachment/, /^v-/, /^nprogress/, /^spinner/, /^peg/, /^bar/, /^vdp/, /^report/, /^vgt/, /^footer/],
     extractors: [
         {
-            extractor: TailwindExtractor,
+            extractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
             extensions: ['html', 'js', 'php', 'vue'],
         },
     ],
