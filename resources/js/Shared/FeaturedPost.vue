@@ -4,7 +4,7 @@
             <a :href="route('posts.show', featured.id)" class="flex flex-wrap h-auto md:h-500p w-full no-underline hover:no-underline">
                 <div class="w-full h-auto md:h-full md:w-2/3 mx-auto md:mx-0 text-center rounded-t">
                     <img :src="featured.featured_image" class="shadow-md">
-                    <p class="text-teal-500 text-xl font-semibold uppercase mt-4">{{ featured.featured_image_caption }}</p>
+                    <p class="text-teal-300 text-sm italic font-semibold mt-2">{{ featured.featured_image_caption }}</p>
                 </div>
                 <div class="w-full h-auto md:h-full md:w-1/3 flex flex-col flex-grow">
                     <div class="flex-1 bg-white rounded-tr-lg overflow-hidden shadow-lg">

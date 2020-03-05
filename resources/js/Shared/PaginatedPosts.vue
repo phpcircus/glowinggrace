@@ -4,15 +4,18 @@
             <inertia-link v-for="post in posts" :key="post.id" :href="route('posts.show', post.id)" class="w-full md:w-1/3 p-6 flex flex-col">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <img :src="post.featured_image" class="h-auto w-full rounded-t pb-6">
-                            <p class="w-full pt-6 px-6">
-                                <template v-for="(tag, index) in post.tags">
-                                    <div :key="tag.id" class="inline-block">
-                                        <span class="text-gray-600 text-sm md:text-base">{{ tag.name }}</span>
-                                        <span v-if="post.tags.length > index + 1" class="-ml-1">,&nbsp;</span>
-                                    </div>
-                                </template>
-                            </p>
+                        <div class="flex flex-col w-full mx-auto text-center">
+                            <img :src="post.featured_image" class="h-auto w-full rounded-t shadow-md" />
+                            <p class="text-teal-300 text-sm italic font-semibold mt-2">{{ post.featured_image_caption }}</p>
+                        </div>
+                        <p class="w-full pt-6 px-6">
+                            <template v-for="(tag, index) in post.tags">
+                                <div :key="tag.id" class="inline-block">
+                                    <span class="text-gray-600 text-sm md:text-base">{{ tag.name }}</span>
+                                    <span v-if="post.tags.length > index + 1" class="-ml-1">,&nbsp;</span>
+                                </div>
+                            </template>
+                        </p>
                         <div class="w-full font-bold text-xl text-gray-900 px-6">{{ post.title }}</div>
                         <p class="text-gray-800 font-serif text-base px-6 mb-5">
                             {{ post.excerpt }}
