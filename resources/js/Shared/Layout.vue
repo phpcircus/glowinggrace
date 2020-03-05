@@ -26,7 +26,7 @@
                 <div class="transform -rotate-30">
                     <img class="inline-block align-middle h-40p w-auto mr-4" src="/img/colorectal_cancer_logo.png" />
                     <h1 class="inline-block align-middle text-center text-3xl xl:text-5xl text-white font-damion leading-none opacity-50">
-                        Kicking cancer's butt <br />since 01/23/2020
+                        Kicking cancer's butt <br />since 01/24/2020
                     </h1>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <div class="block md:hidden mt-4 -ml-10">
                             <img class="inline-block align-middle h-40p w-auto mr-4" src="/img/colorectal_cancer_logo.png" />
                             <h1 class="inline-block align-middle text-center text-xl text-teal-200 font-sigmar leading-none">
-                                Kicking cancer's butt <br />since 01/23/2020
+                                Kicking cancer's butt <br />since 01/24/2020
                             </h1>
                         </div>
                     </div>

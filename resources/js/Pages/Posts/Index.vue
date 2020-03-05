@@ -1,8 +1,15 @@
 <template>
     <layout title="Blog Home">
-        <div class="flex flex-col -mt-16 md:-mt-24">
-            <featured-post :featured="featured" />
-            <paginated-posts :posts="older" :links="links" />
+        <div class="flex flex-col w-full -mt-16 md:-mt-24">
+            <featured-post v-if="featured" :featured="featured" />
+            <paginated-posts v-if="older" :posts="older" :links="links" />
+            <template v-if="! older && ! featured">
+                <div class="w-full text-center mt-16 md:mt-24 bg-white shadow-md">
+                    <h1 class="font-damion text-3xl text-purple-700">
+                        No posts available at this time. Check back soon!
+                    </h1>
+                </div>
+            </template>
         </div>
     </layout>
 </template>
