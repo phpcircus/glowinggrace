@@ -10,7 +10,8 @@ class IndexService extends Service
 {
     use SelfCallingService;
 
-    private Post $posts;
+    /** @var \App\Models\Post */
+    private $posts;
 
     /**
      * Construct a new IndexService.
