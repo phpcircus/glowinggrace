@@ -25,6 +25,7 @@ class InertiaServiceProvider extends ServiceProvider
     {
         $this->shareVersion();
         $this->shareAuthenticatedUser();
+        $this->shareWinkAuthor();
         $this->shareAppData();
         $this->shareFlashMessages();
         $this->shareErrors();
@@ -57,6 +58,28 @@ class InertiaServiceProvider extends ServiceProvider
                         'is_admin' => $user->is_admin,
                         'deleted_at' => $user->deleted_at,
                         'can' => $user->getAuthorizationDetails(),
+                    ] : null,
+                ];
+            },
+        ]);
+    }
+
+    /**
+     * Share the Wink author.
+     */
+    private function shareWinkAuthor(): void
+    {
+        Inertia::share([
+            'wink' => function () {
+                $author = auth('wink')->user();
+
+                return [
+                    'author' => $author ? [
+                        'id' => $author->id,
+                        'name' => $author->name,
+                        'email' => $author->email,
+                        'bio' => $author->bio,
+                        'avatar' => $author->avatar,
                     ] : null,
                 ];
             },
