@@ -4,7 +4,7 @@ use App\Http\Actions;
 use Illuminate\Support\Facades\Route;
 
 // Home
-Route::redirect('/', '/posts');
+Route::redirect('/', '/posts')->name('home');
 
 //
 // Route::get('/dashboard', Actions\Home\Index::class)->name('dashboard')->middleware(['auth']);

@@ -1,6 +1,6 @@
 <template>
     <div class="w-full" :class="logoPosition">
-        <h1 class="font-sigmar inline-block font-bold text-3xl md:text-5xl text-purple-700 site-title">Glowing<span class="font-medium text-teal-100">GRACE</span></h1>
+        <h1 class="font-sigmar inline-block font-bold text-3xl md:text-5xl text-purple-700 site-title leading-none">Glowing<span class="font-medium text-teal-100">GRACE</span></h1>
     </div>
 </template>
 
