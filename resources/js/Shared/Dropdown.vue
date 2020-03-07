@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative">
         <button ref="trigger" type="button" class="relative" @click="toggle">
             <slot name="trigger" />
         </button>
