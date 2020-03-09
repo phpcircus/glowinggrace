@@ -5,7 +5,7 @@
         <tailwind-nav />
 
     <!--Header-->
-    <div class="relative w-full m-0 py-8 bg-teal-500">
+    <div class="relative w-full m-0 pt-8 pb-12 bg-teal-500">
             <div class="flex flex-col container max-w-7xl mx-auto text-center items-center break-normal">
                     <!--Title-->
                     <div class="ml-0">
