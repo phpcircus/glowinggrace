@@ -1,6 +1,6 @@
 <template>
     <layout title="Blog Home">
-        <div class="flex flex-col w-full -mt-16 md:-mt-24">
+        <div class="flex flex-col w-full -mt-16">
             <featured-post v-if="featured" :featured="featured" />
             <paginated-posts v-if="older" :posts="older" :links="links" />
             <template v-if="! older && ! featured">
