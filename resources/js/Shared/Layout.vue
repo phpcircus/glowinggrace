@@ -1,8 +1,9 @@
 <template>
-    <div>
+    <div class="w-full relative">
         <modal />
         <flash-message />
-        <tailwind-nav />
+        <top-nav />
+        <portal-target name="mega" class="absolute w-full z-10"/>
 
     <!--Header-->
     <div class="relative w-full m-0 pt-8 pb-12 bg-teal-500">
@@ -14,7 +15,7 @@
                         </inertia-link>
                         <p class="text-xl md:text-2xl text-teal-100 mb-4 uppercase">Welcome to my Journey</p>
                         <img src="/img/signature.png" class="w-200p mx-auto h-auto"/>
-                        <div class="block mt-4 -ml-10">
+                        <div class="block mt-4">
                             <h1 class="inline-block align-middle text-center text-xl text-teal-200 font-sigmar leading-none">
                                 Kicking cancer's butt <br />since 01/24/2020
                             </h1>
@@ -43,7 +44,7 @@ import MainMenu from '@/Shared/MainMenu';
 import UserMenu from '@/Shared/UserMenu';
 import SiteFooter from '@/Shared/SiteFooter';
 import Breadcrumbs from '@/Shared/Breadcrumbs';
-import TailwindNav from '@/Shared/TailwindNav';
+import TopNav from '@/Shared/TopNav';
 import FlashMessage from '@/Shared/FlashMessage';
 import LockClosed from '@/Shared/Icons/LockClosed';
 import CheveronDown from '@/Shared/Icons/CheveronDown';
@@ -60,7 +61,7 @@ export default {
         SiteFooter,
         LockClosed,
         Breadcrumbs,
-        TailwindNav,
+        TopNav,
         FlashMessage,
         CheveronDown,
     },
@@ -72,6 +73,17 @@ export default {
             return {
                 inner: this.title,
             }
+        },
+    },
+    created () {
+        window.document.addEventListener('click', this.onWindowClick);
+    },
+    beforeDestroy () {
+        window.removeEventListener('click', this.onWindowClick);
+    },
+    methods: {
+        onWindowClick (event) {
+            this.$dispatch('closeAll', event.target);
         },
     },
 }

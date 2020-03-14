@@ -13,7 +13,7 @@ abstract class Model extends Eloquent
     /** @var int */
     protected $perPage = 5;
 
-    /*
+    /**
      * Retrieve the model for a bound value.
      *
      * @param  mixed  $value

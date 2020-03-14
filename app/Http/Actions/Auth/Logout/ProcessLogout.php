@@ -21,7 +21,7 @@ class ProcessLogout extends Action
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/');
+        return $this->loggedOut($request) ?: redirect()->route('posts.home');
     }
 
     /**
@@ -31,7 +31,7 @@ class ProcessLogout extends Action
      */
     protected function guard()
     {
-        return Auth::guard();
+        return Auth::guard('wink');
     }
 
     /**
@@ -43,6 +43,8 @@ class ProcessLogout extends Action
      */
     protected function loggedOut(Request $request)
     {
-        return redirect()->route('dashboard')->with(['success' => 'Logged out!']);
+        flash('success', 'Logged out!');
+
+        return redirect()->route('posts.home');
     }
 }

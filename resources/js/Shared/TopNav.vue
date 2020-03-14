@@ -1,15 +1,19 @@
 <template>
     <nav class="bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center h-full">
                     <div class="flex-shrink-0">
-                        <img class="h-8 w-8" src="/img/colorectal_cancer_logo.png" alt="" />
+                        <img class="h-8 w-8" src="/img/colorectal_cancer_logo.png" alt="colorectal cancer awareness" />
                     </div>
                     <div class="h-full hidden md:block">
                         <div class="h-full ml-10 flex items-baseline">
-                            <a :href="route('home')" class="h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 mr-4 uppercase">Home</a>
+                            <inertia-link :href="route('home')" class="h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 mr-4 uppercase">Home</inertia-link>
                             <a href="https://gofundme.com/help-kimberlyn-fight-cancer" target="_blank" class="h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 uppercase">Gofundme</a>
+                            <a href="#" class="mega h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 uppercase" @click="megaOpen = ! megaOpen">Quick News</a>
+                            <portal v-if="megaOpen" to="mega">
+                                <quick-news />
+                            </portal>
                         </div>
                     </div>
                 </div>
@@ -37,15 +41,16 @@
                         </div>
                     </dropdown>
                 </div>
-                <div class="-mr-2 flex md:hidden cursor-pointer" @click="open = !open">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#718096" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <div class="menu focus:underline-mr-2 flex md:hidden cursor-pointer" @click="open = ! open">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#718096" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </div>
             </div>
         </div>
         <div v-show="open" class="block md:hidden">
             <div class="pt-2 pb-3 sm:px-3">
-                <a :href="route('home')" class="block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600">Home</a>
+                <inertia-link :href="route('home')" class="block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600">Home</inertia-link>
                 <a href="https://gofundme.com/help-kimberlyn-fight-cancer" target="_blank" class="block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600">Gofundme</a>
+                <a href="#" class="mega block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600" @click="megaOpen = ! megaOpen">Quick News</a>
                 <a v-if="! $page.wink.author" class="flex items-center px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 group" :href="route('wink.auth.login')">
                     Login
                 </a>
@@ -75,6 +80,7 @@ import User from '@/Shared/Icons/User';
 import Activities from '@/Shared/Icons/Activities';
 import LockClosed from '@/Shared/Icons/LockClosed';
 import Dropdown from '@/Shared/Dropdown';
+import QuickNews from '@/Shared/QuickNews';
 import IconBase from '@/Shared/IconBase';
 import UserMenu from '@/Shared/UserMenu';
 import CheveronDown from '@/Shared/Icons/CheveronDown';
@@ -85,6 +91,7 @@ export default {
         Activities,
         LockClosed,
         Dropdown,
+        QuickNews,
         IconBase,
         UserMenu,
         CheveronDown,
@@ -92,7 +99,18 @@ export default {
     data () {
         return {
             open: false,
+            megaOpen: false,
         }
+    },
+    created () {
+        this.$listen('closeAll', (e) => {
+            if (! e.classList.contains('menu') && this.open === true) {
+                this.open = false;
+            }
+            if (! e.classList.contains('mega') && this.megaOpen === true) {
+                this.megaOpen = false;
+            }
+        });
     },
 }
 </script>

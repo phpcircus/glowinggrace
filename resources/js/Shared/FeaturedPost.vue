@@ -1,7 +1,7 @@
 <template>
         <!--Featured Post-->
         <div class="w-full bg-white mb-4 rounded-t-lg overflow-hidden shadow-lg">
-            <a :href="route('posts.show', featured.id)" class="flex flex-wrap h-auto md:h-500p w-full no-underline hover:no-underline">
+            <inertia-link :href="route('posts.show', featured.id)" class="flex flex-wrap h-auto md:h-500p w-full no-underline hover:no-underline">
                 <div class="w-full h-auto md:h-full md:w-2/3 mx-auto md:mx-0 text-center rounded-t">
                     <img :src="featured.featured_image" class="shadow-md">
                     <p class="text-teal-300 text-sm italic font-semibold mt-2">{{ featured.featured_image_caption }}</p>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </inertia-link>
         </div>
         <!--/FeaturedPost-->
 </template>

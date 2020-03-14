@@ -5,6 +5,7 @@ import { config } from 'Config';
 import Dates from 'Mixins/Dates';
 import VueStash from 'vue-stash';
 import VModal from 'vue-js-modal';
+import PortalVue from 'portal-vue';
 import Dialogs from '@/plugins/Dialogs';
 import GetsErrors from 'Mixins/GetsErrors';
 import ParsesUrls from 'Mixins/ParsesUrls';
@@ -14,7 +15,6 @@ import ObjectMethods from 'Mixins/ObjectMethods';
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import Snotify, { SnotifyPosition } from 'vue-snotify';
 import HandlesDropdowns from 'Mixins/HandlesDropdowns';
-import HandlesPermissions from 'Mixins/HandlesPermissions';
 import ScreenChanges from 'Mixins/HandlesScreenSizeChanges';
 
 // Use mixins
@@ -24,7 +24,6 @@ Vue.mixin(GetsErrors);
 Vue.mixin(ScreenChanges);
 Vue.mixin(ObjectMethods);
 Vue.mixin(HandlesDropdowns);
-Vue.mixin(HandlesPermissions);
 
 Vue.mixin({
     methods: {
@@ -36,6 +35,9 @@ Vue.mixin({
         },
     },
 });
+
+//Use PortalVue
+Vue.use(PortalVue);
 
 // Use Dispatcher
 Vue.use(Dispatcher);

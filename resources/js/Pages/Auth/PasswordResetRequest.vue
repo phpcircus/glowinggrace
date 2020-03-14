@@ -1,11 +1,11 @@
 <template>
     <blank-layout>
-        <div class="px-6 bg-blue-800 min-h-screen flex justify-center pt-32">
+        <div class="px-6 bg-teal-500 min-h-screen flex justify-center pt-32">
             <div class="w-full max-w-lg">
                 <logo class="block mx-auto w-full max-w-lg fill-white" height="50" />
                 <form class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden" @submit.prevent="submit">
                     <div class="px-10 py-12">
-                        <h1 class="text-center font-bold text-2xl">Password Reset Request</h1>
+                        <h1 class="text-center text-gray-800 font-bold text-2xl">Password Reset Request</h1>
                         <div class="mx-auto mt-6 w-24 border-b-2" />
                         <text-input v-model="form.email" class="mt-10" label="Email" :errors="getErrors('email')" type="email" autofocus autocapitalize="off" />
                     </div>

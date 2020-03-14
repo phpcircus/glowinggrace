@@ -12,8 +12,6 @@ trait HasSlug
 
     /**
      * Get the slug options.
-     *
-     * @return \App\Models\Traits\Slug\SlugOptions
      */
     abstract public function getSlugOptions(): SlugOptions;
 

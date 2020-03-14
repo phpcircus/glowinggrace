@@ -158,6 +158,10 @@ module.exports = {
                   '30': '30deg',
                   '-30': '-30deg',
               },
+              borderWidth: {
+                  '12': '12px',
+                  '16': '16px',
+              },
             fontFamily: {
                 'lato': [
                     'lato',
