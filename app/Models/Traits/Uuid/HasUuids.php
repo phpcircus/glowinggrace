@@ -46,6 +46,6 @@ trait HasUuids
             return;
         }
 
-        $this->uuid = Uuid::uuid4();
+        $this->id = Uuid::uuid4();
     }
 }

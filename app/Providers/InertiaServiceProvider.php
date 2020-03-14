@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\News;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -28,6 +29,7 @@ class InertiaServiceProvider extends ServiceProvider
         $this->shareWinkAuthor();
         $this->shareAppData();
         $this->shareFlashMessages();
+        $this->shareNews();
         $this->shareErrors();
     }
 
@@ -57,7 +59,6 @@ class InertiaServiceProvider extends ServiceProvider
                         'email' => $user->email,
                         'is_admin' => $user->is_admin,
                         'deleted_at' => $user->deleted_at,
-                        'can' => $user->getAuthorizationDetails(),
                     ] : null,
                 ];
             },
@@ -126,6 +127,22 @@ class InertiaServiceProvider extends ServiceProvider
                     'message' => $info ? $info['message'] : null,
                     'class' => $info ? $info['class'] : null,
                 ];
+            },
+        ]);
+    }
+
+    /**
+     * Share news.
+     */
+    private function shareNews(): void
+    {
+        Inertia::share([
+            'news' => function () {
+                if ($news = News::latest()->limit(5)->get()) {
+                    return $news;
+                }
+
+                return (object) [];
             },
         ]);
     }

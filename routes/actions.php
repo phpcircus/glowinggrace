@@ -2,6 +2,8 @@
 
 use App\Http\Actions;
 use Illuminate\Support\Facades\Route;
+use Wink\Http\Middleware\Authenticate as Wink;
+
 
 // Home
 Route::redirect('/', '/posts')->name('home');
@@ -14,11 +16,11 @@ Route::redirect('/', '/posts')->name('home');
 
 // Authentication and Registration
 // Auth - Login
-// Route::group(['middleware' => ['guest'], 'as' => 'login.', 'prefix' => 'login'], function ($router) {
-//     $router->get('/', Actions\Auth\Login\ShowForm::class)->name('form');
-//     $router->post('/', Actions\Auth\Login\ProcessLogin::class)->name('attempt');
-// });
-// Route::post('/logout', Actions\Auth\Logout\ProcessLogout::class)->middleware('auth')->name('logout');
+Route::group(['middleware' => ['guest'], 'as' => 'login.', 'prefix' => 'login'], function ($router) {
+    $router->get('/', Actions\Auth\Login\ShowForm::class)->name('form');
+    $router->post('/', Actions\Auth\Login\ProcessLogin::class)->name('attempt');
+});
+Route::post('/logout', Actions\Auth\Logout\ProcessLogout::class)->middleware(['auth:wink'])->name('logout');
 
 // Auth - Register
 // Route::group(['middleware' => ['guest'], 'as' => 'register.', 'prefix' => 'register'], function ($router) {
@@ -27,12 +29,12 @@ Route::redirect('/', '/posts')->name('home');
 // });
 
 // Password Reset
-// Route::group(['middleware' => ['guest'], 'as' => 'password.', 'prefix' => 'password'], function ($router) {
-//     $router->get('/reset', Actions\Auth\PasswordResetRequest\ShowForm::class)->name('request.form');
-//     $router->post('/email', Actions\Auth\PasswordResetRequest\SendEmail::class)->name('request.email');
-//     $router->get('/reset/{token}', Actions\Auth\PasswordReset\ShowForm::class)->name('reset');
-//     $router->post('/reset', Actions\Auth\PasswordReset\UpdatePassword::class)->name('update');
-// });
+Route::group(['middleware' => ['guest'], 'as' => 'password.', 'prefix' => 'password'], function ($router) {
+    $router->get('/reset', Actions\Auth\PasswordResetRequest\ShowForm::class)->name('request.form');
+    $router->post('/email', Actions\Auth\PasswordResetRequest\SendEmail::class)->name('request.email');
+    $router->get('/reset/{token}', Actions\Auth\PasswordReset\ShowForm::class)->name('reset');
+    $router->post('/reset', Actions\Auth\PasswordReset\UpdatePassword::class)->name('update');
+});
 
 //
 // Email Verification
@@ -61,4 +63,11 @@ Route::redirect('/', '/posts')->name('home');
 Route::group(['as' => 'posts.', 'prefix' => 'posts'], function ($router) {
     $router->get('/', Actions\Post\Index::class)->name('home');
     $router->get('/{post}', Actions\Post\Show::class)->name('show');
+});
+
+// News
+Route::group(['as' => 'news.', 'prefix' => 'news', 'middleware' => [Wink::class]], function ($router) {
+    $router->get('/create', Actions\News\Create::class)->name('create');
+    $router->post('/store', Actions\News\Store::class)->name('store');
+    $router->get('/{news}', Actions\News\Show::class)->name('show');
 });

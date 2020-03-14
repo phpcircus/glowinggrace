@@ -137,6 +137,6 @@ class ProcessLogin extends Action
      */
     protected function guard()
     {
-        return Auth::guard();
+        return Auth::guard('wink');
     }
 }
