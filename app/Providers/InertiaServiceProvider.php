@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use Wink\Wink;
+use Wink\WinkAuthor;
+use Wink\WinkTag;
 
 class InertiaServiceProvider extends ServiceProvider
 {
@@ -82,6 +85,9 @@ class InertiaServiceProvider extends ServiceProvider
                         'bio' => $author->bio,
                         'avatar' => $author->avatar,
                     ] : null,
+                    'supplementals' => Wink::scriptVariables() ?? (object) [],
+                    'tags' => WinkTag::all() ?? (object) [],
+                    'authors' => WinkAuthor::all() ?? (object) [],
                 ];
             },
         ]);
@@ -118,6 +124,22 @@ class InertiaServiceProvider extends ServiceProvider
                 return [
                     'message' => $warning ? $warning['message'] : null,
                     'class' => $warning ? $warning['class'] : null,
+                ];
+            },
+            'wink_success' => static function () {
+                $winkSuccess = Session::get('flash_message')['wink_success'] ?? null;
+
+                return [
+                    'message' => $winkSuccess ? $winkSuccess['message'] : null,
+                    'class' => $winkSuccess ? $winkSuccess['class'] : null,
+                ];
+            },
+            'wink_warning' => static function () {
+                $winkWarning = Session::get('flash_message')['wink_warning'] ?? null;
+
+                return [
+                    'message' => $winkWarning ? $winkWarning['message'] : null,
+                    'class' => $winkWarning ? $winkWarning['class'] : null,
                 ];
             },
             'info' => static function () {

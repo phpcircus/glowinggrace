@@ -7,13 +7,13 @@
                 </icon-base>
                 My Profile
             </a>
-            <a class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('wink.spa')">
+            <inertia-link class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('admin.posts.index')">
                 <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="users" classes="mr-2 group-hover:fill-white">
                     <users />
                 </icon-base>
-                New Post
-            </a>
-            <inertia-link class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('news.create')">
+                Manage Posts
+            </inertia-link>
+            <inertia-link class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('admin.news.create')">
                 <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="users" classes="mr-2 group-hover:fill-white">
                     <list-add />
                 </icon-base>

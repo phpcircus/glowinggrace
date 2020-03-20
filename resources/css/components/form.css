@@ -6,7 +6,7 @@
 .form-input,
 .form-textarea,
 .form-select {
-  @apply .p-2 .leading-normal .block .w-full .border .text-gray-800 .bg-white .font-sans .rounded .text-left .appearance-none .relative;
+  @apply .p-2 .leading-normal .block .w-full .border .text-gray-800 .bg-white .font-lato .rounded .text-left .appearance-none .relative;
 
   &:focus,
   &.focus {
@@ -115,15 +115,7 @@ input[type='radio'].radio-custom:checked ~ .radio-toggle::after {
   top: -200px;
 }
 
-.border-sides {
-  border-style: solid;
-  /* border-top-width: 4px; */
-  border-left-width: 16px;
-  border-right-width: 16px;
-  border-bottom-width: 16px;
-  /* border-top-color: white; */
-  border-left-color: #38b2ac;
-  border-right-color: #38b2ac;
-  border-bottom-color: #38b2ac;
+.ql-container.ql-bubble .ql-editor hr {
+  @apply .mb-4 .leading-none;
 }
 /* purgecss end ignore */

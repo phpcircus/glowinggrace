@@ -6,12 +6,18 @@
 </template>
 
 <script>
+import Hub from 'Events/hub';
+
 export default {
     props: {
         loading: Boolean,
         type: {
             type: String,
             default: 'submit',
+        },
+        theme: {
+            type: String,
+            default: 'light',
         },
     },
     computed: {

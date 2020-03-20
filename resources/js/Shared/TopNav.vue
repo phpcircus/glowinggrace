@@ -1,16 +1,16 @@
 <template>
-    <nav class="bg-white">
+    <nav :class="backgroundColor">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center h-full">
                     <div class="flex-shrink-0">
-                        <img class="h-8 w-8" src="/img/colorectal_cancer_logo.png" alt="colorectal cancer awareness" />
+                        <img class="h-8 w-8" src="/img/colorectal_cancer_logo.png" alt="colorectal cancer awareness"></img>
                     </div>
                     <div class="h-full hidden md:block">
                         <div class="h-full ml-10 flex items-baseline">
-                            <inertia-link :href="route('home')" class="h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 mr-4 uppercase">Home</inertia-link>
-                            <a href="https://gofundme.com/help-kimberlyn-fight-cancer" target="_blank" class="h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 uppercase">Gofundme</a>
-                            <a href="#" class="mega h-full px-3 py-5 text-sm font-semibold text-purple-600 bg-white focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 uppercase" @click="megaOpen = ! megaOpen">Quick News</a>
+                            <inertia-link :href="route('home')" class="h-full px-3 py-5 text-sm font-semibold mr-4 uppercase focus:outline-none" :class="linkColors">Home</inertia-link>
+                            <a href="https://gofundme.com/help-kimberlyn-fight-cancer" target="_blank" class="h-full px-3 py-5 text-sm font-semibold uppercase focus:outline-none" :class="linkColors">Gofundme</a>
+                            <a href="#" class="mega h-full px-3 py-5 text-sm font-semibold uppercase focus:outline-none" :class="linkColors" @click="megaOpen = ! megaOpen">Quick News</a>
                             <portal v-if="megaOpen" to="mega">
                                 <quick-news />
                             </portal>
@@ -76,6 +76,7 @@
 </template>
 
 <script>
+import Hub from 'Events/hub';
 import User from '@/Shared/Icons/User';
 import Activities from '@/Shared/Icons/Activities';
 import LockClosed from '@/Shared/Icons/LockClosed';
@@ -86,6 +87,12 @@ import UserMenu from '@/Shared/UserMenu';
 import CheveronDown from '@/Shared/Icons/CheveronDown';
 
 export default {
+    props: {
+        backgroundColor: {
+            type: String,
+            required: true,
+        },
+    },
     components: {
         User,
         Activities,
@@ -102,12 +109,21 @@ export default {
             megaOpen: false,
         }
     },
+    computed: {
+        linkColors () {
+            if (this.backgroundColor === 'bg-white') {
+                return 'text-purple-600 bg-white focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600';
+            }
+
+            return 'text-white bg-teal-500 focus:text-purple-600 focus:bg-white hover:text-purple-600 hover:bg-white';
+        },
+    },
     created () {
-        this.$listen('closeAll', (e) => {
-            if (! e.classList.contains('menu') && this.open === true) {
+        Hub.$listen('closeAll', (obj) => {
+            if (! obj.target.classList.contains('menu') && this.open === true) {
                 this.open = false;
             }
-            if (! e.classList.contains('mega') && this.megaOpen === true) {
+            if (! obj.target.classList.contains('mega') && this.megaOpen === true) {
                 this.megaOpen = false;
             }
         });

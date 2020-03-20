@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Actions\News;
+namespace App\Http\Actions\Admin\News;
 
-use App\Http\Responders\News\StoreResponder;
+use App\Http\Responders\Admin\News\StoreResponder;
 use App\Services\News\StoreService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,13 +11,13 @@ use PerfectOblivion\ActionServiceResponder\Actions\Action;
 
 class Store extends Action
 {
-    /** @var \App\Http\Responders\News\StoreResponder **/
+    /** @var \App\Http\Responders\Admin\News\StoreResponder * */
     private $responder;
 
     /**
      * Construct a new Store.
      *
-     * @param  \App\Http\Responders\News\StoreResponder  $responder
+     * @param  \App\Http\Responders\Admin\News\StoreResponder  $responder
      */
     public function __construct(StoreResponder $responder)
     {
