@@ -1,6 +1,20 @@
 import { config } from 'Config';
 
 export default {
+    workingPost: {
+        title: '',
+        body: '',
+        publish_date: null,
+        excerpt: '',
+        tags: [],
+        author_id: '',
+        featured_image: null,
+        featured_image_caption: '',
+        id: '',
+        meta: {},
+        published: false,
+        slug: '',
+    },
     meta: {
         admin: {
             name: config.admin.name,

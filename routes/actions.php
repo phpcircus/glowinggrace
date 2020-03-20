@@ -4,7 +4,6 @@ use App\Http\Actions;
 use Illuminate\Support\Facades\Route;
 use Wink\Http\Middleware\Authenticate as Wink;
 
-
 // Home
 Route::redirect('/', '/posts')->name('home');
 
@@ -59,6 +58,26 @@ Route::group(['middleware' => ['guest'], 'as' => 'password.', 'prefix' => 'passw
 //     $router->put('/{user}/restore', Actions\User\RestoreUser::class)->middleware(['can:administerUsers'])->name('restore');
 // });
 
+// Admin
+Route::group(['as' => 'admin.', 'prefix' => 'admin'], function ($router) {
+    $router->group(['as' => 'posts.', 'prefix' => 'posts', 'middleware' => [Wink::class]], function ($router) {
+        $router->get('/', Actions\Admin\Post\Index::class)->name('index');
+        $router->get('/new', Actions\Admin\Post\Edit::class)->name('create');
+        $router->get('/{post}/edit', Actions\Admin\Post\Edit::class)->name('edit');
+    });
+    $router->group(['as' => 'news.', 'prefix' => 'news', 'middleware' => [Wink::class]], function ($router) {
+        $router->get('/new', Actions\Admin\News\Create::class)->name('create');
+        $router->post('/', Actions\Admin\News\Store::class)->name('store');
+    });
+});
+
+// Admin Api
+Route::group(['as' => 'api.', 'prefix' => 'api/admin', 'middleware' => [Wink::class]], function ($router) {
+    Route::group(['as' => 'posts.', 'prefix' => 'posts'], function ($router) {
+        $router->post('/', Actions\Admin\Post\Api\Store::class)->name('store');
+    });
+});
+
 // Blog
 Route::group(['as' => 'posts.', 'prefix' => 'posts'], function ($router) {
     $router->get('/', Actions\Post\Index::class)->name('home');
@@ -66,8 +85,9 @@ Route::group(['as' => 'posts.', 'prefix' => 'posts'], function ($router) {
 });
 
 // News
-Route::group(['as' => 'news.', 'prefix' => 'news', 'middleware' => [Wink::class]], function ($router) {
-    $router->get('/create', Actions\News\Create::class)->name('create');
-    $router->post('/store', Actions\News\Store::class)->name('store');
+Route::group(['as' => 'news.', 'prefix' => 'news'], function ($router) {
     $router->get('/{news}', Actions\News\Show::class)->name('show');
 });
+
+// TShirts
+Route::get('/tshirt', Actions\Tshirt\Show::class)->name('tshirt');
