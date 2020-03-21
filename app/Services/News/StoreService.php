@@ -10,7 +10,8 @@ class StoreService extends Service
 {
     use SelfCallingService;
 
-    private News $news;
+    /** @var \App\Models\News */
+    private $news;
 
     /**
      * Construct a new StoreService.
