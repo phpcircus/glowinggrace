@@ -2,9 +2,9 @@
     <layout title="Team Kimberlyn">
         <div class="flex flex-col bg-white shadow-md container mx-auto max-w-7xl">
             <div class="px-6 pb-8">
-                <div class="flex justify-center mt-2">
-                    <img src="/img/black_shirt.jpg" class="w-1/3 h-auto border-4 border-gray-400 rounded shadow">
-                    <img src="/img/gray_shirt.jpg" class="w-1/3 h-auto border-4 border-gray-400 rounded shadow">
+                <div class="w-full flex flex-col md:flex-row justify-center mt-2">
+                    <img src="/img/black_shirt.jpg" class="w-full md:w-1/3 h-auto border-4 border-gray-400 rounded shadow">
+                    <img src="/img/gray_shirt.jpg" class="w-full md:w-1/3 h-auto border-4 border-gray-400 rounded shadow">
                 </div>
                 <p class="font-opensans text-sm italic text-gray-600 font-semibold text-center w-full">
                     <span class="mr-4">Shirt sizes YS to AXL: <span class="font-bold">$20</span></span>
