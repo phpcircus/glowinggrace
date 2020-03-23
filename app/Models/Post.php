@@ -25,13 +25,13 @@ class Post extends WinkPost
      *
      * @param string|null $value
      */
-    public function setExcerptAttribute($value): string
+    public function setExcerptAttribute($value): void
     {
         if (! $value) {
-            return 'Post by Kimberlyn Stone';
+            $this->attributes['excerpt'] = 'Post by Kimberlyn Stone';
+        } else {
+            $this->attributes['excerpt'] = $value;
         }
-
-        return $value;
     }
 
     /**
@@ -39,13 +39,13 @@ class Post extends WinkPost
      *
      * @param string|null $value
      */
-    public function setFeaturedImageCaptionAttribute($value): string
+    public function setFeaturedImageCaptionAttribute($value): void
     {
         if (! $value) {
-            return 'caption';
+           $this->attributes['featured_image_caption'] = 'caption';
+        } else {
+            $this->attributes['featured_image_caption'] = $value;
         }
-
-        return $value;
     }
 
     /**

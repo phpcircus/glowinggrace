@@ -4,6 +4,7 @@ namespace App\Services\Admin\Post\Api;
 
 use App\Models\Post;
 use App\Services\Admin\Post\Api\StoreValidationService;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use PerfectOblivion\ActionServiceResponder\Services\Service;
 use PerfectOblivion\ActionServiceResponder\Services\Traits\SelfCallingService;
@@ -41,8 +42,12 @@ class StoreService extends Service
     public function run(array $parameters = [])
     {
         $entry = $this->post_id !== 'new' ? $this->posts->findOrFail($this->post_id) : $this->posts->make(['id' => $parameters['id']]);
-        $entry->fill($parameters);
-        $entry->save();
+        if ($this->post_id === 'new') {
+            $entry->fill($parameters);
+            $entry->save();
+        } else {
+            $entry->update(Arr::except($parameters, ['id']));
+        }
 
         if ($tags = $this->tags) {
             $entry->tags()->sync(
