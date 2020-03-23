@@ -1,19 +1,24 @@
+import Hub from 'Events/hub';
+
 export default {
     install (Vue, options) {
-        Vue.prototype.$showDialog = (level, subject, verb, callback) => {
+        Vue.prototype.$showDialog = (level, amount, callback) => {
             Vue.prototype.$modal.show('dialogModal', {
-                title: level === 'warning' ? 'Caution!' : 'Info',
-                text: `Are you sure you want to ${verb} this ${subject}?`,
+                title: level === 'warning' ? 'Caution!' : 'Notice',
+                text: `Your total is $${amount}, proceed?`,
                 buttons: [
                     {
-                        title: verb.charAt(0).toUpperCase() + verb.slice(1) + ' ' + subject.charAt(0).toUpperCase() + subject.slice(1),
-                        type: verb,
+                        title: 'Proceed',
+                        type: 'create',
                         handler: callback,
                     },
                     {
                         title: 'Close',
                         type: 'close',
-                        handler: () => Vue.prototype.$modal.hide('dialogModal'),
+                        handler: () => {
+                            Vue.prototype.$modal.hide('dialogModal');
+                            Hub.$dispatch('purchaseFormReady');
+                        },
                     },
                 ],
             });
