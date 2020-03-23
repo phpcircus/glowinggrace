@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <form ref="form" class="w-full md:w-1/2 my-6" @submit.prevent="purchase()">
+                    <form ref="form" class="w-full md:w-1/2 my-6" @submit.prevent="confirm()">
                         <label class="stripe">
                             <span :class="errorType === 'name' ? 'text-red-500' : ''">Name</span>
                             <input v-model="extraDetails.name" name="name" class="stripe-field" placeholder="Jane Doe" required>
@@ -120,6 +120,7 @@
 import axios from 'axios';
 import { config } from 'Config';
 import { forEach } from 'lodash';
+import Hub from 'Events/hub';
 import Layout from '@/Shared/Layout';
 import TextInput from '@/Shared/TextInput';
 
@@ -236,12 +237,16 @@ export default {
         this.card.on('change', event => {
             this.processOutcome(event);
         });
+
+        Hub.$listen('purchaseFormReady', () => {
+            this.ready = true;
+        });
     },
     mounted () {
         this.card.mount(this.$refs.card);
     },
     methods: {
-        purchase () {
+        confirm () {
             this.ready = false;
             this.error = false;
             this.errorType = '';
@@ -314,6 +319,12 @@ export default {
                 }
             }
 
+            this.$showDialog('notice', this.total, () => {
+                this.purchase();
+                this.$modal.hide('dialogModal');
+            });
+        },
+        purchase () {
             let extraDetails = {
                 name: this.extraDetails.name,
             };
