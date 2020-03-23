@@ -145,7 +145,7 @@ export default {
                 id: '',
                 title: 'Post Title',
                 slug: '',
-                excerpt: '',
+                excerpt: 'New post.',
                 tags: [],
                 author_id: '',
                 featured_image: '',
@@ -200,7 +200,6 @@ export default {
         this.ready = true;
     },
     destroyed () {
-        console.log('destroyed');
         this.resetWorkingPost();
     },
     methods: {
