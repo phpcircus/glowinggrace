@@ -17,11 +17,14 @@
             </div>
             <div class="bg-purple-200">
                 <div class="flex flex-col md:flex-row p-6 mt-2">
-                    <div class="flex flex-col flex-wrap h-540p w-full md:w-1/2">
-                        <div v-for="size in $page.app.sizes" :key="size.id" class="flex flex-col mb-2">
-                            <div class="flex items-center">
-                                <span class="inline-block align-middle text-sm mr-4 w-80p md:w-120p">{{ size.color }} - {{ size.abbr }}</span>
-                                <text-input v-model="sizes[size.slug]" type="number" :step="1" class="w-60p" />
+                    <div class="flex flex-col w-full md:w-1/2">
+                        <h1 class="text-teal-600 text-xs font-semibold uppercase mb-4">Enter the quantity next to your choices:</h1>
+                        <div class="flex flex-col flex-wrap h-540p w-full">
+                            <div v-for="size in $page.app.sizes" :key="size.id" class="flex flex-col mb-2">
+                                <div class="flex items-center">
+                                    <span class="inline-block align-middle text-sm mr-4 w-80p md:w-120p">{{ size.color }} - {{ size.abbr }}</span>
+                                    <text-input v-model="sizes[size.slug]" type="number" :step="1" class="w-60p" />
+                                </div>
                             </div>
                         </div>
                     </div>
