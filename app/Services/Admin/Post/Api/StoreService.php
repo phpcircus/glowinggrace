@@ -13,7 +13,8 @@ class StoreService extends Service
 {
     use SelfCallingService;
 
-    private Post $posts;
+    /** @var \App\Models\Post */
+    private $posts;
 
     /** @var \App\Services\Admin\Post\Api\StoreValidationService */
     protected $validator;
