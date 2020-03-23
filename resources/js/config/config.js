@@ -1,6 +1,7 @@
 export const config = {
     appName: process.env.MIX_APP_NAME,
     timezone: process.env.MIX_FRONTEND_TIMEZONE,
+    stripe: process.env.MIX_STRIPE_KEY,
     admin: {
         name: process.env.MIX_ADMIN_NAME,
         email: process.env.MIX_ADMIN_EMAIL,

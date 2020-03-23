@@ -7,9 +7,6 @@ use Wink\Http\Middleware\Authenticate as Wink;
 // Home
 Route::redirect('/', '/posts')->name('home');
 
-//
-// Route::get('/dashboard', Actions\Home\Index::class)->name('dashboard')->middleware(['auth']);
-
 // About
 // Route::get('about', Actions\About\Index::class)->name('about');
 
@@ -21,12 +18,6 @@ Route::group(['middleware' => ['guest'], 'as' => 'login.', 'prefix' => 'login'],
 });
 Route::post('/logout', Actions\Auth\Logout\ProcessLogout::class)->middleware(['auth:wink'])->name('logout');
 
-// Auth - Register
-// Route::group(['middleware' => ['guest'], 'as' => 'register.', 'prefix' => 'register'], function ($router) {
-//     $router->get('/', Actions\Auth\Register\ShowForm::class)->name('form');
-//     $router->post('/', Actions\Auth\Register\ProcessRegistration::class)->name('attempt');
-// });
-
 // Password Reset
 Route::group(['middleware' => ['guest'], 'as' => 'password.', 'prefix' => 'password'], function ($router) {
     $router->get('/reset', Actions\Auth\PasswordResetRequest\ShowForm::class)->name('request.form');
@@ -34,18 +25,6 @@ Route::group(['middleware' => ['guest'], 'as' => 'password.', 'prefix' => 'passw
     $router->get('/reset/{token}', Actions\Auth\PasswordReset\ShowForm::class)->name('reset');
     $router->post('/reset', Actions\Auth\PasswordReset\UpdatePassword::class)->name('update');
 });
-
-//
-// Email Verification
-//
-// Middleware is defined inside the constructor of each Action.
-// ['auth', 'signed', 'throttle']
-//
-// Route::group(['as' => 'verification.', 'prefix' => 'email'], function ($router) {
-//     $router->get('/verify', Actions\Auth\EmailVerification\ShowVerification::class)->name('notice');
-//     $router->get('/verify/{id}', Actions\Auth\EmailVerification\Verify::class)->name('verify');
-//     $router->get('/resend ', Actions\Auth\EmailVerification\ResendVerify::class)->name('resend');
-// });
 
 // Users
 // Route::group(['middleware' => ['auth'], 'as' => 'users.', 'prefix' => 'users'], function ($router) {
@@ -69,6 +48,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function ($router) {
         $router->get('/new', Actions\Admin\News\Create::class)->name('create');
         $router->post('/', Actions\Admin\News\Store::class)->name('store');
     });
+    $router->group(['as' => 'tshirts.', 'prefix' => 'tshirts', 'middleware' => [Wink::class]], function ($router) {
+        $router->get('/', Actions\Admin\Tshirt\Index::class)->name('index');
+        $router->get('/{purchase}', Actions\Admin\Tshirt\Show::class)->name('show');
+        $router->post('/{purchase}', Actions\Admin\Tshirt\Update::class)->name('update');
+    });
 });
 
 // Admin Api
@@ -90,4 +74,7 @@ Route::group(['as' => 'news.', 'prefix' => 'news'], function ($router) {
 });
 
 // TShirts
-Route::get('/tshirt', Actions\Tshirt\Show::class)->name('tshirt');
+Route::group(['as' => 'tshirt.', 'prefix' => 'tshirt'], function ($router) {
+    $router->get('/', Actions\Tshirt\Create::class)->name('create');
+    $router->post('/purchase', Actions\Tshirt\Purchase::class)->middleware('money')->name('purchase');
+});

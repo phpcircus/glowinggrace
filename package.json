@@ -40,6 +40,7 @@
         "sass": "^1.26.3",
         "sass-loader": "^8.0.2",
         "tailwindcss": "^1.2.0",
+        "v-money": "^0.8.1",
         "vue": "^2.6.11",
         "vue-croppie": "^2.0.1",
         "vue-good-table": "^2.18.0",

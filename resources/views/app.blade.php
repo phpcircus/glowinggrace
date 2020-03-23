@@ -19,6 +19,8 @@
 
     <body class="bg-gray-200 font-lato leading-normal tracking-normal">
         @inertia
+
+        <script src="https://js.stripe.com/v3/"></script>
     </body>
 
 </html>

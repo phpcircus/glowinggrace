@@ -11,13 +11,13 @@
             </div>
             <!--Title-->
             <div class="text-center pt-8 md:pt-16">
-                <p class="text-sm md:text-base text-teal-500 font-bold">- {{ post.readable_publish_date }} -<span class="text-gray-900"></span></p>
+                <p class="text-sm md:text-base text-teal-500 font-bold">- {{ post.readable_publish_date }} -<span class="text-gray-900" /></p>
                 <h1 class="font-bold break-normal text-3xl md:text-5xl">{{ post.title }}</h1>
             </div>
 
             <!--image-->
             <div class="container w-full max-w-7xl mx-auto rounded">
-                <img :src="post.featured_image" class="mx-auto" />
+                <img :src="post.featured_image" class="mx-auto">
             </div>
 
             <!--Container-->
@@ -40,16 +40,16 @@ import IconBase from '@/Shared/IconBase';
 import ArrowLeft from '@/Shared/Icons/ArrowLeft';
 
 export default {
+    components: {
+        Layout,
+        IconBase,
+        ArrowLeft,
+    },
     props: {
         post: {
             type: [Array, Object],
             default: () => ({}),
         },
-    },
-    components: {
-        Layout,
-        IconBase,
-        ArrowLeft,
     },
 }
 </script>

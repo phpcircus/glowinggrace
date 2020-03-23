@@ -17,7 +17,13 @@
                 <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="users" classes="mr-2 group-hover:fill-white">
                     <list-add />
                 </icon-base>
-                News Item
+                Quick News Item
+            </inertia-link>
+            <inertia-link class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('admin.tshirts.index')">
+                <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="purchases" classes="mr-2 group-hover:fill-white">
+                    <shirt />
+                </icon-base>
+                Manage Purchases
             </inertia-link>
             <inertia-link class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="route('logout')" method="post">
                 <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="logout" classes="mr-2 group-hover:fill-white">
@@ -42,14 +48,16 @@ import Logout from '@/Shared/Icons/Logout';
 import ListAdd from '@/Shared/Icons/ListAdd';
 import LockClosed from '@/Shared/Icons/LockClosed';
 import Profile from '@/Shared/Icons/Profile';
+import Shirt from '@/Shared/Icons/Shirt';
 
 export default {
     components: {
         Users,
+        Shirt,
         Logout,
         Profile,
-        IconBase,
         ListAdd,
+        IconBase,
         LockClosed,
     },
 }
