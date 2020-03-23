@@ -79,6 +79,7 @@ export default {
             this.orders = filter(this.purchases, purchase => {
                 return purchase.delivered == false;
             });
+            this.showAll = false;
         },
         showAllOrders () {
             this.orders = this.purchases;
