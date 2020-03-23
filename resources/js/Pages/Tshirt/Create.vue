@@ -13,6 +13,7 @@
                         <span class="mr-4">XXXL:  <span class="font-bold">$22</span></span>
                     </div>
                     <span class="mr-4 text-teal-500 font-bold">For shipped orders, the final cost includes $5 to cover shipping.</span>
+                    <span class="mr-4 text-teal-500 font-semibold">Scroll to the bottom of the page for information about shipping.</span>
                 </div>
             </div>
             <div class="bg-purple-200">
