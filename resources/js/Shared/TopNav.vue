@@ -53,9 +53,9 @@
                 <a href="https://gofundme.com/help-kimberlyn-fight-cancer" target="_blank" class="block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600">Gofundme</a>
                 <a href="#" class="mega block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600" @click="megaOpen = ! megaOpen">Quick News</a>
                 <inertia-link :href="route('tshirt.create')" class="block px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600">Team Kimberlyn T-Shirt</inertia-link>
-                <a v-if="! $page.wink.author" class="flex items-center px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 group" :href="route('wink.auth.login')">
+                <inertia-link v-if="! $page.wink.author" class="flex items-center px-3 py-2 text-base font-bold text-purple focus:outline-none focus:text-white focus:bg-purple-600 hover:text-white hover:bg-purple-600 group" :href="route('login.form')">
                     Login
-                </a>
+                </inertia-link>
             </div>
             <div v-if="$page.wink.author" class="pt-4 pb-3 border-t border-gray-700">
                 <div class="flex items-center px-5">
@@ -72,7 +72,7 @@
                     <inertia-link :href="route('admin.posts.index')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Manage Posts</inertia-link>
                     <inertia-link :href="route('admin.news.create')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Quick News Item</inertia-link>
                     <inertia-link :href="route('admin.tshirts.index')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Manage Purchases</inertia-link>
-                    <a :href="route('wink.auth.login')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Logout</a>
+                    <inertia-link :href="route('logout')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500" method="POST">Logout</inertia-link>
                 </div>
             </div>
         </div>
