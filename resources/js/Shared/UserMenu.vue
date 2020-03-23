@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col py-1 rounded-md bg-white shadow-xs">
         <div v-if="$page.wink.author">
-            <a class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="`/admin/team/${$page.wink.author.id}`">
+            <a class="flex items-center px-3 py-2 hover:bg-purple-600 hover:text-white text-base group" :href="`/wink/team/${$page.wink.author.id}`">
                 <icon-base width="14" height="14" icon-fill="fill-gray-800" icon-name="profile" classes="mr-2 group-hover:fill-white">
                     <profile />
                 </icon-base>

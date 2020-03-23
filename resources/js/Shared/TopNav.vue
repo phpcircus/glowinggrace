@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <a :href="`/admin/team/${$page.wink.author.id}`" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Profile</a>
+                    <a :href="`/wink/team/${$page.wink.author.id}`" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Profile</a>
                     <inertia-link :href="route('admin.posts.index')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Manage Posts</inertia-link>
                     <inertia-link :href="route('admin.news.create')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Quick News Item</inertia-link>
                     <inertia-link :href="route('admin.tshirts.index')" class="mt-1 block px-3 py-2 text-base font-medium text-gray-900 hover:text-white hover:bg-teal-500 focus:outline-none focus:text-white focus:bg-teal-500">Manage Purchases</inertia-link>
