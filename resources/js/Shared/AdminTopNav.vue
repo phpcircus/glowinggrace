@@ -1,6 +1,6 @@
 <template>
-    <div class="flex w-full items-center mb-2">
-        <inertia-link v-if="! onIndexPage" class="flex items-center px-3 py-2 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white text-base group" :href="route('admin.posts.index')">
+    <div class="flex w-full items-center mb-2 px-4 md:px-0">
+        <inertia-link v-if="! onIndexPage && ! onNonPostsPage" class="flex items-center px-3 py-2 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white text-base group" :href="route('admin.posts.index')">
             <icon-base width="14" height="14" icon-fill="fill-teal-500" icon-name="back" classes="mr-2 group-hover:fill-white">
                 <arrow-left />
             </icon-base>
@@ -19,7 +19,7 @@
                 </icon-base>
                 Unpublish
             </span>
-            <loading-button :loading="saving" theme="dark" type="button" v-if="currentlyEditingPost" class="flex items-center px-3 py-2 text-base cursor-pointer group" :class="saveButtonColors" href="#" @clicked="saveClicked()">
+            <loading-button v-if="currentlyEditingPost" :loading="saving" theme="dark" type="button" class="flex items-center px-3 py-2 text-base cursor-pointer group" :class="saveButtonColors" href="#" @clicked="saveClicked()">
                 <icon-base width="14" height="14" icon-name="save" classes="mr-2 group-hover:fill-white" :class="saveIconColors">
                     <save />
                 </icon-base>
@@ -72,12 +72,21 @@ export default {
             return this.workingPost.id !== '' && this.workingPost.published == true;
         },
         onIndexPage () {
-            return this.pathEndsWith('posts') || this.pathEndsWith('posts/');
+            return (this.pathEndsWith('posts') || this.pathEndsWith('posts/'));
+        },
+        onNonPostsPage () {
+            if (this.isPath('admin/tshirts') || this.isPath('admin/news')) {
+                return true;
+            }
+
+            return false;
         },
         rightBorderForNewPost () {
             if(! this.onIndexPage) {
                 return 'border-r-0';
             }
+
+            return '';
         },
         saveButtonColors () {
             return `${this.saving ? 'bg-teal-500 text-white border border-teal-500' : 'border border-teal-500 text-teal-500'} hover:bg-teal-500 hover:text-white`;

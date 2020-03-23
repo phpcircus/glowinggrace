@@ -28,7 +28,7 @@ export default {
         return h('div', {
             on: {
                 change: event => this.$emit('input', event.target.checked),
-              },
+            },
             domProps: {
                 innerHTML: this.setInnerHTML(),
                 checked: this.checked,

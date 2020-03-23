@@ -3,11 +3,12 @@
 namespace App\Providers;
 
 use App\Models\News;
-use Inertia\Inertia;
+use App\Models\Size;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 use Wink\Wink;
 use Wink\WinkAuthor;
 use Wink\WinkTag;
@@ -102,6 +103,7 @@ class InertiaServiceProvider extends ServiceProvider
             'app' => static function () {
                 return [
                     'name' => Config::get('app.name'),
+                    'sizes' => Size::available()->get(),
                 ];
             },
         ]);

@@ -15,10 +15,10 @@
                         <logo position="center" />
                     </inertia-link>
                     <p class="text-xl md:text-2xl text-teal-100 mb-4 uppercase">Welcome to my Journey</p>
-                    <img src="/img/signature.png" class="w-200p mx-auto h-auto" />
+                    <img src="/img/signature.png" class="w-200p mx-auto h-auto">
                     <div class="block mt-4">
                         <h1 class="inline-block align-middle text-center text-xl text-teal-200 font-sigmar leading-none">
-                            Kicking cancer's butt <br />since 01/24/2020
+                            Kicking cancer's butt <br>since 01/24/2020
                         </h1>
                     </div>
                 </div>
@@ -40,45 +40,20 @@
 import Hub from 'Events/hub';
 import Logo from '@/Shared/Logo';
 import Modal from '@/Shared/Modal';
-import User from '@/Shared/Icons/User';
-import Dropdown from '@/Shared/Dropdown';
-import IconBase from '@/Shared/IconBase';
-import MainMenu from '@/Shared/MainMenu';
-import UserMenu from '@/Shared/UserMenu';
 import SiteFooter from '@/Shared/SiteFooter';
-import Breadcrumbs from '@/Shared/Breadcrumbs';
 import TopNav from '@/Shared/TopNav';
 import FlashMessage from '@/Shared/FlashMessage';
-import LockClosed from '@/Shared/Icons/LockClosed';
-import CheveronDown from '@/Shared/Icons/CheveronDown';
-import FullscreenModal from '@/wink/components/FullscreenModal';
 
 export default {
     components: {
         Logo,
-        User,
         Modal,
-        IconBase,
-        UserMenu,
-        MainMenu,
-        Dropdown,
         SiteFooter,
-        LockClosed,
-        Breadcrumbs,
         TopNav,
         FlashMessage,
-        CheveronDown,
-        FullscreenModal,
     },
     props: {
         title: String,
-    },
-    head: {
-        title: function () {
-            return {
-                inner: this.title,
-            }
-        },
     },
     created () {
         window.document.addEventListener('click', this.onWindowClick);
@@ -91,10 +66,17 @@ export default {
             Hub.$dispatch('closeAll', { target: event.target });
         },
         isAdminPage () {
-            return this.isPath('admin') ? true : false;;
+            return this.isPath('admin') ? true : false;
         },
         getTopNavBackground () {
             return this.isAdminPage() ? 'bg-teal-500' : 'bg-white';
+        },
+    },
+    head: {
+        title: function () {
+            return {
+                inner: this.title,
+            }
         },
     },
 }

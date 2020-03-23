@@ -1,0 +1,87 @@
+label.stripe {
+    position: relative;
+    color: #6A7C94;
+    font-weight: 400;
+    height: 48px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+label.stripe > span {
+    width: 115px;
+}
+
+.stripe-field {
+    background: white;
+    box-sizing: border-box;
+    font-weight: 400;
+    border: 1px solid #CFD7DF;
+    border-radius: 24px;
+    color: #32315E;
+    outline: none;
+    flex: 1;
+    height: 48px;
+    line-height: 48px;
+    padding: 16px 20px;
+    cursor: text;
+}
+
+.stripe-field::-webkit-input-placeholder { color: rgb(145, 149, 153); }
+.stripe-field::-moz-placeholder { color: rgb(145, 149, 153); }
+
+.stripe-field:focus,
+.stripe-field.StripeElement--focus {
+    border-color: #F99A52;
+}
+
+button.stripe {
+    float: left;
+    display: block;
+    background-image: linear-gradient(-180deg, #F8B563 0%, #F99A52 100%);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10), inset 0 -1px 0 0 #E57C45;
+    color: white;
+    border-radius: 24px;
+    border: 0;
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 500;
+    width: 160px;
+    height: 48px;
+    line-height: 48px;
+    outline: none;
+}
+
+button.stripe:focus {
+    background: #EF8C41;
+}
+
+button.stripe:active {
+    background: #E17422;
+}
+
+.stripe-outcome {
+    float: left;
+    width: 100%;
+    padding-top: 8px;
+    min-height: 20px;
+    text-align: center;
+}
+
+.stripe-success, .stripe-error {
+    font-size: 13px;
+}
+
+.stripe-error {
+    color: #E4584C;
+}
+
+.stripe-success {
+    color: #38C172;
+}
+
+.stripe-success .token {
+    font-weight: 500;
+    font-size: 13px;
+}

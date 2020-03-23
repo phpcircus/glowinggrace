@@ -3,6 +3,20 @@
 use App\Flash\Flash;
 use App\Flash\Message;
 
+if (! function_exists('format_money')) {
+    /**
+     * Format the given number as money in US dollars.
+     *
+     * @param  int  $value
+     */
+    function format_money($value): string
+    {
+        $fmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+
+        return $fmt->format($value);
+    }
+}
+
 if (! function_exists('redirect_if')) {
     /**
      * Redirect to the given route,url, or action if the given condition is true.
