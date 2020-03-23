@@ -57,20 +57,20 @@
                         <div v-if="deliveryType === 'shipped'" class="mt-4">
                             <label class="stripe">
                                 <span :class="errorType === 'address' ? 'text-red-500' : ''">Address</span>
-                                <input v-model="address" class="stripe-field" placeholder="123 Easy St. Apt. 342" type="tel" required>
+                                <input v-model="address" class="stripe-field" placeholder="123 Easy St. Apt. 342" type="text" required>
                             </label>
                             <label class="stripe">
                                 <span :class="errorType === 'city' ? 'text-red-500' : ''">City</span>
-                                <input v-model="city" class="stripe-field" placeholder="Westchestersonfieldville" type="tel" required>
+                                <input v-model="city" class="stripe-field" placeholder="Westchestersonfieldville" type="text" required>
                             </label>
                             <label class="stripe">
                                 <span :class="errorType === 'state' ? 'text-red-500' : ''">State</span>
-                                <input v-model="state" class="stripe-field" placeholder="MS" type="tel" required>
+                                <input v-model="state" class="stripe-field" placeholder="MS" type="text" required>
                             </label>
                         </div>
                         <label class="stripe">
                             <span :class="errorType === 'zip' ? 'text-red-500' : ''">ZIP</span>
-                            <input v-model="zip" class="stripe-field" placeholder="90210" type="tel" required>
+                            <input v-model="zip" class="stripe-field" placeholder="90210" type="text" required>
                         </label>
                         <div v-if="deliveryType === 'pickup'" class="mt-4">
                             <span class="text-gray-600" :class="errorType === 'pickupLocation' ? 'text-red-500' : ''">Pickup Location</span>
