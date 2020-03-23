@@ -42,8 +42,12 @@ export default {
                     label: 'Excerpt',
                 },
                 {
-                    name: 'readable_publish_date',
+                    name: 'published',
                     label: 'Published',
+                },
+                {
+                    name: 'readable_publish_date',
+                    label: 'Created',
                 },
             ],
         }
