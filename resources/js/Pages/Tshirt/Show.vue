@@ -26,9 +26,9 @@
                             <span class="text-sm text-teal-500 font-semibold">{{ order.address }}</span>
                             <span class="text-sm text-teal-500 font-semibold">{{ order.city }}, {{ order.state }} {{ order.zip }}</span>
                         </div>
-                        <div class="flex items-center mb-4">
+                        <div v-if="order.method == 'pickup'" class="flex items-center mb-4">
                             <span class="text-sm text-gray-800 font-semibold w-160p">PICKUP LOCATION: </span>
-                            <span v-if="order.method == 'pickup'" class="text-sm text-gray-800 font-normal" v-text="order.pickup_location == 'irving' ? 'Irving, TX' : 'Senatobia, MS'" />
+                            <span class="text-sm text-gray-800 font-normal" v-text="order.pickup_location == 'irving' ? 'Irving, TX' : 'Senatobia, MS'" />
                         </div>
                         <checkbox v-model="delivered" class="pb-4 text-lg w-full lg:w-1/2" label="DELIVERY COMPLETE? " :width="4" :height="4" :checked="!!delivered" />
                         <div class="flex items-center border-t border-gray-300 pt-8">
