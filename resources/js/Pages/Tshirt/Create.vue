@@ -6,15 +6,14 @@
                     <img src="/img/black_shirt.jpg" class="w-full md:w-1/3 h-auto border-4 border-gray-400 rounded shadow">
                     <img src="/img/gray_shirt.jpg" class="w-full md:w-1/3 h-auto border-4 border-gray-400 rounded shadow">
                 </div>
-                <p class="font-opensans text-sm italic text-gray-600 font-semibold text-center w-full">
-                    <span class="mr-4">Shirt sizes YS to AXL: <span class="font-bold">$20</span></span>
-                    <span class="mr-4">XXL:  <span class="font-bold">$21</span></span>
-                    <span class="mr-4">XXXL:  <span class="font-bold">$22</span></span>
-                </p>
-                <p class="font-opensans text-base text-teal-500 font-semibold text-center w-full">
-                    Use this form if you wish to pay with a credit/debit card. If you wish to pay via PayPal or CashApp,
-                    <a href="https://docs.google.com/forms/d/1aZgaBNXgSH-9zanv6nFpVplVvTp7jxjkfcqQB31Fg28/viewform?edit_requested=true" target="_blank" class="text-purple-400">Click Here</a>.
-                </p>
+                <div class="font-opensans flex flex-col text-sm italic text-gray-600 font-semibold text-center w-full">
+                    <div class="flex self-center">
+                        <span class="mr-4">Shirt sizes YS to AXL: <span class="font-bold">$20</span></span>
+                        <span class="mr-4">XXL:  <span class="font-bold">$21</span></span>
+                        <span class="mr-4">XXXL:  <span class="font-bold">$22</span></span>
+                    </div>
+                    <span class="mr-4 text-teal-500 font-bold">For shipped orders, the final cost includes $5 to cover shipping.</span>
+                </div>
             </div>
             <div class="bg-purple-200">
                 <div class="flex flex-col md:flex-row p-6 mt-2">
@@ -106,7 +105,7 @@
             <div>
                 <p class="font-opensans text-base text-gray-800 px-6 py-8">
                     Kimberlyn Stone was diagnosed in January with colorectal cancer.  She and Clay live in Irving, Texas.  They have a beautiful family that includes four children and a precious granddaughter. Kimberlyn was finally getting to pursue her lifelong dream of becoming a cosmetologist.  She was busy juggling work, school, church and family when they got this news and everything changed.  This is going to be a long, hard journey for all of them, family and friends included.  I have designed this tshirt as a reminder that Kimberlyn is never alone. <br><br>We are here for you and will keep you prayed up!  All the profits from these shirts will go to Clay and Kimberlyn to help with their financial needs throughout this fight!<br><br>
-                    The t-shirts are bella canvas and will be available in both youth and adult sizes.  There are two colors to chose from black and gray.  You can choose to pick up locally with in Senatobia, MS or Irving, TX or have the shirt(s) shipped directly to you.  Within 72 hours of your forms submission, if you paid via credit/debit card, you will receive a confirmation email with further details regarding your order. If you're choosing to pay via PayPal or CashApp <a href="https://docs.google.com/forms/d/1aZgaBNXgSH-9zanv6nFpVplVvTp7jxjkfcqQB31Fg28/viewform?edit_requested=true" target="_blank" class="text-purple-400 font-semibold">click here</a> for further information.  We will place the first order April 3.  Shirts should be delivered or shipped 3 week after the order is placed.<br><br>
+                    The t-shirts are bella canvas and will be available in both youth and adult sizes.  There are two colors to chose from black and gray.  You can choose to pick up locally with in Senatobia, MS or Irving, TX or have the shirt(s) shipped directly to you.  Within 24 hours of your purchase, you will receive a confirmation email with further details regarding your order. We will place the first order April 3.  Shirts should be delivered or shipped 3 weeks after the order is placed.<br><br>
                     Please reach out to Lauren Spencer at lauren.sbckids@gmail.com if you have any questions.  Thank you for your support and prayers for this precious family!
                 </p>
             </div>
