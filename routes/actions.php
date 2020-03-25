@@ -52,6 +52,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function ($router) {
         $router->get('/', Actions\Admin\Tshirt\Index::class)->name('index');
         $router->get('/{purchase}', Actions\Admin\Tshirt\Show::class)->name('show');
         $router->post('/{purchase}', Actions\Admin\Tshirt\Update::class)->name('update');
+        $router->get('/orders/pdf', Actions\Admin\Tshirt\Pdf\OrdersPdf::class)->name('orders.pdf');
     });
 });
 
