@@ -2,11 +2,11 @@
 
 namespace App\Http\Actions\Tshirt;
 
+use App\Events\Purchase\PurchaseSuccessful;
 use App\Services\Customer\CreateCustomerService;
 use App\Services\Tshirt\ChargeService;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use PerfectOblivion\ActionServiceResponder\Actions\Action;
 
 class Purchase extends Action
@@ -46,6 +46,8 @@ class Purchase extends Action
                 $purchase = $customer->purchases()->latest()->first();
                 $purchase->purchase_success = 1;
                 $purchase->save();
+
+                PurchaseSuccessful::dispatch($purchase->load(['customer', 'lineItems.size']));
 
                 return response()->json(['success' => "Thanks so much for your purchase. Your total is {$purchase->readable_total}. We will contact you soon regarding delivery."], 201);
             } catch (Exception $e) {
