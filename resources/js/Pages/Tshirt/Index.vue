@@ -6,6 +6,12 @@
                     <div class="flex items-center ml-auto mb-4">
                         <span v-if="! showAll" class="text-xs md:text-sm text-gray-600 font-semibold italic mr-4">( Showing orders not yet delivered )</span>
                         <span v-if="showAll" class="text-xs md:text-sm text-gray-600 font-semibold italic mr-4">( Showing all orders )</span>
+                        <a :href="route('admin.tshirts.orders.pdf', { q: showAll ? 'all' : '' })" target="_blank" class="flex items-center px-3 hover:bg-blue-500 group mr-2">
+                            <icon-base width="14" height="14" icon-fill="fill-gray-700" icon-name="printable" classes="inline-block align-middle mr-2 group-hover:fill-white">
+                                <printer />
+                            </icon-base>
+                            <span class="text-sm font-semibold text-gray-700 group-hover:text-white inline-block align-middle">View PDF</span>
+                        </a>
                         <span v-if="showAll" class="btn btn-muted btn-sm text-teal-500 cursor-pointer" @click="showNotDeliveredOrders()">Show Not Delivered</span>
                         <span v-if="! showAll" class="btn btn-muted btn-sm text-teal-500 cursor-pointer" @click="showAllOrders()">Show All</span>
                     </div>
@@ -50,11 +56,13 @@ import AdminSubLayout from '@/Shared/AdminSubLayout';
 import { filter } from 'lodash';
 import IconBase from '@/Shared/IconBase';
 import Layout from '@/Shared/Layout';
+import Printer from '@/Shared/Icons/Printer';
 import ViewEye from '@/Shared/Icons/ViewEye';
 
 export default {
     components: {
         Layout,
+        Printer,
         ViewEye,
         IconBase,
         AdminSubLayout,

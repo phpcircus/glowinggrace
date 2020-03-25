@@ -13,12 +13,18 @@ trait PurchaseBuilderScopes
     }
 
     /**
-     * Scope the query to purchases that were successful.
-     *
-     * @param  bool  $onlyNotDelivered
+     * Scope the query to purchases that have been delivered.
      */
-    public function notDelivered(bool $onlyNotDelivered): PurchaseQueryBuilder
+    public function delivered(): PurchaseQueryBuilder
     {
-        return $onlyNotDelivered ? $this->where('delivered', '=', false) : $this;
+        return $this->where('delivered', '=', true);
+    }
+
+    /**
+     * Scope the query to purchases that have been delivered.
+     */
+    public function notDelivered(): PurchaseQueryBuilder
+    {
+        return $this->where('delivered', '=', false);
     }
 }
